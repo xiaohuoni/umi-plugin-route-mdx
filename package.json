@@ -1,0 +1,45 @@
+{
+  "name": "umi-plugin-route-mdx",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "cd demo && umi dev",
+    "build": "father build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiaohuoni/umi-plugin-route-mdx.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xiaohuoni/umi-plugin-route-mdx/issues"
+  },
+  "homepage": "https://github.com/xiaohuoni/umi-plugin-route-mdx#readme",
+  "dependencies": {
+    "@mdx-js/loader": "^2.2.1",
+    "@mdx-js/react": "^2.3.0",
+    "hast": "^1.0.0",
+    "rehype-autolink-headings": "^6.1.1",
+    "rehype-external-links": "^2.0.1",
+    "rehype-prism-plus": "^1.5.1",
+    "rehype-remove-comments": "^5.0.0",
+    "remark-breaks": "^3.0.2",
+    "remark-directive": "^2.0.1",
+    "remark-frontmatter": "^4.0.1",
+    "remark-gfm": "^3.0.1",
+    "remark-parse": "^10.0.1"
+  },
+  "devDependencies": {
+    "@types/hast": "^2.3.4",
+    "@types/node": "^18.13.0",
+    "father": "^4.1.4",
+    "umi": "^4.0.51"
+  }
+}
