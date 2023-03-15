@@ -1,5 +1,10 @@
 import { IApi } from "umi";
 import type { Element } from "hast";
+import { winPath, Mustache } from "@umijs/utils";
+
+import { readFileSync } from "fs";
+import { join, dirname } from "path";
+const DIR_NAME = "plugin-route-mdx";
 
 export default (api: IApi) => {
   api.describe({
@@ -57,6 +62,36 @@ export default (api: IApi) => {
       },
     };
     return memo;
+  });
+  api.onGenerateFiles(() => {
+    const contextTpl = readFileSync(
+      join(__dirname, "..", "templates", "ReactMarkDown.tpl"),
+      "utf-8"
+    );
+    const options: any = {};
+    [
+      "react-markdown",
+      "remark-parse",
+      "remark-frontmatter",
+      "remark-directive",
+      "remark-breaks",
+      "remark-gfm",
+      "rehype-autolink-headings",
+      "rehype-remove-comments",
+      // "rehype-prism-plus",
+      "rehype-external-links",
+    ].forEach((k: string) => {
+      // winPath(dirname(require.resolve('antd-mobile-alita'))),
+      options[k] = winPath(dirname(require.resolve(`${k}`)));
+    });
+
+    // rehype-prism-plus/dist ??
+    options['rehype-prism-plus'] = winPath(dirname(dirname(require.resolve('rehype-prism-plus'))));
+    api.writeTmpFile({
+      path: `${DIR_NAME}/index.tsx`,
+      noPluginDir: true,
+      content: Mustache.render(contextTpl, options),
+    });
   });
 
   api.addHTMLStyles(() => {
