@@ -23,3 +23,13 @@ export default defineConfig({
 ```js
 document.documentElement.classList.toggle("dark", true);
 ```
+
+## Markdown 
+
+use React-Markdown, default config like mdx [loaderOptions](https://github.com/xiaohuoni/umi-plugin-route-mdx/blob/master/src/index.ts#L37)
+
+```js
+import { Markdown } from 'umi';
+
+<Markdown># hello</Markdown>
+```
