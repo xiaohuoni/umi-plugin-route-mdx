@@ -37,5 +37,5 @@ export function Markdown(props) {
       ],
     ],
   };
-  return <ReactMarkdown {...plugin} {...props} />;
+  return <ReactMarkdown {...plugin} className="markdown" {...props} />;
 }
